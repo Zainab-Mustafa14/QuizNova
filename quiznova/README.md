@@ -1,55 +1,90 @@
-# QuizNova
+# QuizNova 🧠
 
-QuizNova is a responsive multiple-choice quiz app built with HTML, CSS, and vanilla JavaScript modules.
+QuizNova is a responsive online quiz application built with HTML, CSS, and JavaScript. It allows users to test their knowledge across multiple categories, receive instant feedback, review their answers, and track their personal best scores.
 
-## Features
+## ✨ Features
 
-- Mixed Quiz or one of eight categories: HTML, CSS, JavaScript, Computer Science, Science, Geography, History, and General Knowledge.
-- 80 questions total (10 per category); each round contains 10 randomized questions with shuffled options.
-- Optional 20-second countdown for each question.
-- Immediate answer feedback with explanations.
-- Question progress indicator and timer ring.
-- Results screen with score, percentage, performance message, and a saved personal best for each category.
-- Review Answers screen with the exact option order, selected answer, correct answer, timeout status, and explanations.
-- Responsive layout and keyboard-friendly navigation.
-- No framework, build step, or API key required.
+- **Multiple Quiz Categories:** HTML, CSS, JavaScript, Computer Science, Science, Geography, History, and General Knowledge.
+- **Mixed Quiz Mode:** Test your knowledge with questions from different categories.
+- **Timed Quizzes:** Optional countdown timer for each question.
+- **Instant Feedback:** Get immediate feedback after selecting an answer.
+- **Answer Explanations:** Learn why an answer is correct.
+- **Progress Tracking:** Track your progress throughout the quiz.
+- **Results Summary:** View your final score and percentage.
+- **Review Answers:** Review questions, selected answers, correct answers, and explanations.
+- **Personal Best Scores:** Save your best scores using browser LocalStorage.
+- **Responsive Design:** Use the application on desktop and mobile devices.
+- **Interactive UI:** Modern interface with animated background effects.
 
-## Run locally
-
-QuizNova uses JavaScript ES modules, so run it through a local web server rather than opening `index.html` directly.
-
-### Option 1: Python
-
-From the project folder, run:
-
-```bash
-python -m http.server 8000
-```
-
-Open `http://localhost:8000` in your browser.
-
-### Option 2: VS Code
-
-Install the **Live Server** extension, right-click `index.html`, and select **Open with Live Server**.
-
-## Deploy
-
-The project is static and can be deployed to GitHub Pages, Vercel, or Netlify. Upload the project files and use the project root as the deployment root. No build command is required.
-
-## Tech stack
+## 🛠️ Technologies Used
 
 - HTML5
 - CSS3
-- Vanilla JavaScript (ES modules)
-- Browser LocalStorage for personal-best scores
+- JavaScript (Vanilla JS)
+- LocalStorage
 
-## Quick test checklist
+## 📂 Project Structure
 
-1. Start a Mixed Quiz and a quiz from an individual category.
-2. Answer correctly and incorrectly; confirm feedback and explanations appear.
-3. Enable the timer and let one question time out.
-4. Finish all 10 questions and check the score and percentage.
-5. Open **Review Answers** and verify the selected/correct answers and explanations.
-6. Return to Results and confirm the score and personal-best message remain unchanged.
-7. Return to Welcome, start another round, and confirm the previous answers are not reused.
-8. Refresh the page and confirm saved personal-best scores remain available.
+```text
+QuizNova/
+├── index.html
+├── css/
+│   ├── base/
+│   ├── components/
+│   ├── layout/
+│   ├── screens/
+│   └── animations.css
+├── js/
+│   ├── core/
+│   ├── data/
+│   ├── services/
+│   ├── state/
+│   └── ui/
+└── README.md
+```
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+You need a modern web browser and a code editor such as Visual Studio Code.
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone YOUR_GITHUB_REPOSITORY_URL
+   ```
+
+2. Open the project folder in Visual Studio Code.
+
+3. Run `index.html` using the Live Server extension, or use another local web server.
+
+4. Select a quiz category, choose whether to enable the timer, and click **Start Quiz**.
+
+## 🎮 How to Use
+
+1. Choose **Mixed Quiz** or your preferred category.
+2. Enable or disable the timer.
+3. Start the quiz and answer each question.
+4. View instant feedback and explanations.
+5. Check your final score on the Results screen.
+6. Open Review Answers to examine your responses.
+7. Try again and aim to beat your personal best.
+
+## 💾 Score Storage
+
+QuizNova uses browser LocalStorage to save personal best scores. These scores remain available in the same browser unless its stored site data is cleared. They are not synchronized across different devices or browsers.
+
+## 🎯 Project Goal
+
+The goal of QuizNova is to provide a simple, interactive, and user-friendly platform for practicing technical concepts and general knowledge while learning through instant feedback and answer explanations.
+
+## 👩‍💻 Author
+
+**Zainab Mustafa**
+
+## 📄 License
+
+This project is available for learning and personal use. Add a specific open-source license if you intend to distribute it under defined license terms.
