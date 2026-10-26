@@ -1,0 +1,69 @@
+
+
+@keyframes orb-drift-a {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(14vw, 16vh, 0) scale(1.18);
+  }
+  100% {
+    transform: translate3d(-4vw, 8vh, 0) scale(1.05);
+  }
+}
+
+@keyframes orb-drift-b {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-16vw, 12vh, 0) scale(0.9);
+  }
+  100% {
+    transform: translate3d(-6vw, -14vh, 0) scale(1.1);
+  }
+}
+
+@keyframes orb-drift-c {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(12vw, -16vh, 0) scale(1.15);
+  }
+  100% {
+    transform: translate3d(-14vw, -6vh, 0) scale(0.95);
+  }
+}
+
+@keyframes orb-drift-d {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-14vw, -14vh, 0) scale(1.12);
+  }
+  100% {
+    transform: translate3d(6vw, -4vh, 0) scale(0.95);
+  }
+}
+
+/* Reduced motion: users who ask their OS for less motion get a calm page. */
+@media (prefers-reduced-motion: reduce) {
+  /* Glows stay put as static soft lights */
+  .ambient-bg__orb,
+  .ambient-bg::before {
+    animation: none;
+    will-change: auto;
+  }
+
+  /* Safety net for any other animation or transition in the project */
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

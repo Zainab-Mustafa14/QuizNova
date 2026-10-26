@@ -1,0 +1,220 @@
+
+
+.results {
+  width: 100%;
+  max-width: 40rem;
+  margin-inline: auto;
+  animation: quiz-enter var(--duration-base) var(--ease-out) both; /* keyframes live in quiz.css */
+}
+
+.results__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-5);
+  padding: var(--space-5);
+  text-align: center;
+}
+
+@media (min-width: 40em) {
+  .results__card {
+    padding: var(--space-7) var(--space-6);
+  }
+}
+
+.results__category {
+  padding: var(--space-1) var(--space-3);
+  border: 1px solid rgba(34, 211, 238, 0.3);
+  border-radius: var(--radius-pill);
+  background: rgba(34, 211, 238, 0.08);
+  color: var(--color-cyan);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.results__title {
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* Focus target, not a control: no ring */
+.results__title:focus {
+  outline: none;
+}
+
+/* ---------- Score ring ---------- */
+
+.score-ring {
+  position: relative;
+  width: clamp(10rem, 44vw, 12.5rem);
+  aspect-ratio: 1;
+}
+
+.score-ring__svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg); /* start at the top */
+  filter: drop-shadow(0 0 14px rgba(139, 92, 246, 0.45));
+}
+
+.score-ring__track,
+.score-ring__fill {
+  fill: none;
+  stroke-width: 10;
+}
+
+.score-ring__track {
+  stroke: rgba(255, 255, 255, 0.09);
+}
+
+.score-ring__fill {
+  stroke: url(#score-gradient);
+  stroke-linecap: round;
+  stroke-dasharray: 326.73; /* 2 * PI * 52 */
+  stroke-dashoffset: 326.73; /* starts empty; JavaScript sets the real value */
+  transition: stroke-dashoffset 1200ms var(--ease-out);
+}
+
+.score-ring__label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+}
+
+.score-ring__percent {
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.score-ring__score {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Message ---------- */
+
+.results__tier {
+  font-size: var(--text-xl);
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.results__message {
+  margin-top: calc(var(--space-3) * -1);
+  color: var(--color-text-muted);
+}
+
+/* ---------- Stats ---------- */
+
+.results__stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+  width: 100%;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-4) var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.stat__value {
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.stat__label {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+.stat__note {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+.stat--correct {
+  border-color: rgba(52, 211, 153, 0.35);
+}
+
+.stat--correct .stat__value {
+  color: var(--color-success);
+}
+
+.stat--incorrect {
+  border-color: rgba(248, 113, 113, 0.35);
+}
+
+.stat--incorrect .stat__value {
+  color: var(--color-error);
+}
+
+.results__summary {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+/* ---------- Actions and messages ---------- */
+
+.results__actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  width: 100%;
+}
+
+@media (min-width: 40em) {
+  .results__actions {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+.results__note {
+  width: 100%;
+  border-color: rgba(34, 211, 238, 0.4);
+  background: rgba(34, 211, 238, 0.1);
+}
+
+.results__error {
+  width: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .results {
+    animation: none;
+  }
+
+  .score-ring__fill {
+    transition: none;
+  }
+}
+/* Personal best saved locally for each quiz category. */
+.results__best-score {
+  margin: 0.75rem 0 0;
+  color: var(--text-muted, #a7a7b8);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  text-align: center;
+}

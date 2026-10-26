@@ -1,0 +1,78 @@
+
+
+.app-shell {
+
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.container {
+  width: 100%;
+  max-width: 72rem;
+  margin-inline: auto;
+  padding-inline: var(--space-4);
+}
+
+@media (min-width: 48em) {
+  .container {
+    padding-inline: var(--space-6);
+  }
+}
+
+
+
+.site-header {
+  padding-block: var(--space-4);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.brand__mark {
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: var(--radius-sm);
+  background: var(--gradient-brand);
+  color: var(--color-bg);
+  font-size: 1.1rem;
+  box-shadow: var(--shadow-glow);
+}
+
+/* ---------- Main area ---------- */
+
+.site-main {
+  flex: 1; /* pushes the footer to the bottom on tall screens */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-block: var(--space-5) var(--space-7);
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  padding-block: var(--space-5);
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  text-align: center;
+}

@@ -1,0 +1,404 @@
+
+
+.welcome {
+  display: grid;
+  gap: var(--space-7);
+  align-items: center;
+}
+
+
+@media (min-width: 60em) {
+  .welcome {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+    gap: var(--space-8);
+  }
+}
+
+
+
+.welcome__intro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-5);
+}
+
+.welcome__eyebrow {
+  padding: var(--space-1) var(--space-3);
+  border: 1px solid rgba(34, 211, 238, 0.3);
+  border-radius: var(--radius-pill);
+  background: rgba(34, 211, 238, 0.08);
+  color: var(--color-cyan);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.welcome__title {
+  font-size: var(--text-hero);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+.welcome__title-accent {
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.welcome__description {
+  max-width: 34rem;
+  color: var(--color-text-muted);
+  font-size: var(--text-lg);
+}
+
+.welcome__facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-5) var(--space-6);
+  width: 100%;
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-border);
+}
+
+.welcome__fact {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.welcome__fact-value {
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.welcome__fact-label {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+/* ---------- Setup panel (right column) ---------- */
+
+.setup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  padding: var(--space-5);
+}
+
+@media (min-width: 40em) {
+  .setup {
+    padding: var(--space-6);
+  }
+}
+
+.setup__title {
+  font-size: var(--text-xl);
+}
+
+.setup__subtitle {
+  margin-top: var(--space-1);
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+.setup__group {
+  min-width: 0;
+  padding: 0;
+  border: 0;
+}
+
+.setup__legend {
+  margin-bottom: var(--space-3);
+  padding: 0;
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.setup__footer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.setup__note {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  text-align: center;
+}
+
+/* ---------- Category picker ---------- */
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+}
+
+@media (min-width: 40em) {
+  .category-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.category-option {
+  position: relative;
+  display: block;
+}
+
+/* The real radio input sits invisibly on top of the whole card.
+   It stays focusable, keyboard-operable, and clickable. */
+.category-option__input {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.category-option__card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-3);
+  height: 100%;
+  padding: var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.03);
+  transition:
+    transform var(--duration-fast) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out),
+    background var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out);
+}
+
+.category-option__icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--color-violet-light);
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  transition:
+    background var(--duration-base) var(--ease-out),
+    color var(--duration-base) var(--ease-out);
+}
+
+.category-option__name {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.category-option__hint {
+  display: block;
+  margin-top: var(--space-1);
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  font-weight: 400;
+}
+
+/* The checkmark badge: a non-color signal for the selected option */
+.category-option__check {
+  position: absolute;
+  top: var(--space-2);
+  right: var(--space-2);
+  display: grid;
+  place-items: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 50%;
+  background: var(--gradient-brand);
+  color: var(--color-bg);
+  font-size: 0.75rem;
+  font-weight: 700;
+  opacity: 0;
+  transform: scale(0.6);
+  transition:
+    opacity var(--duration-fast) var(--ease-out),
+    transform var(--duration-base) var(--ease-out);
+}
+
+/* Featured option (Mixed Quiz): full-width row */
+.category-option--featured {
+  grid-column: 1 / -1;
+}
+
+.category-option--featured .category-option__card {
+  flex-direction: row;
+  align-items: center;
+  padding: var(--space-4);
+}
+
+.category-option--featured .category-option__check {
+  top: 50%;
+  right: var(--space-4);
+  margin-top: -0.625rem;
+}
+
+/* Hover */
+.category-option:hover .category-option__card {
+  border-color: var(--color-border-strong);
+  background: rgba(255, 255, 255, 0.06);
+  transform: translateY(-2px);
+}
+
+/* Selected */
+.category-option__input:checked + .category-option__card {
+  border-color: var(--color-violet-light);
+  background:
+    linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(34, 211, 238, 0.1)),
+    rgba(255, 255, 255, 0.03);
+  box-shadow: var(--shadow-glow);
+}
+
+.category-option__input:checked + .category-option__card .category-option__icon {
+  background: var(--gradient-brand);
+  color: var(--color-bg);
+}
+
+.category-option__input:checked + .category-option__card .category-option__check {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Keyboard focus (the input is invisible, so we draw the ring on the card) */
+.category-option__input:focus-visible + .category-option__card {
+  outline: 2px solid var(--color-cyan);
+  outline-offset: 3px;
+}
+
+/* ---------- Timer toggle ---------- */
+
+.timer-toggle {
+  position: relative;
+}
+
+/* Visually hidden but still focusable and screen-reader accessible */
+.timer-toggle__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.timer-toggle__label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.03);
+  cursor: pointer;
+  transition:
+    border-color var(--duration-base) var(--ease-out),
+    background var(--duration-base) var(--ease-out);
+}
+
+.timer-toggle__label:hover {
+  border-color: var(--color-border-strong);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.timer-toggle__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.timer-toggle__title {
+  font-weight: 600;
+}
+
+.timer-toggle__hint {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+.timer-toggle__track {
+  position: relative;
+  flex-shrink: 0;
+  width: 3rem;
+  height: 1.75rem;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.1);
+  transition:
+    background var(--duration-base) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out);
+}
+
+.timer-toggle__thumb {
+  position: absolute;
+  top: 50%;
+  left: 3px;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-top: -0.625rem;
+  border-radius: 50%;
+  background: var(--color-text-muted);
+  transition:
+    transform var(--duration-base) var(--ease-out),
+    background var(--duration-base) var(--ease-out);
+}
+
+/* Checked (on) */
+.timer-toggle__input:checked + .timer-toggle__label {
+  border-color: rgba(139, 92, 246, 0.5);
+}
+
+.timer-toggle__input:checked + .timer-toggle__label .timer-toggle__track {
+  border-color: transparent;
+  background: var(--gradient-brand);
+}
+
+.timer-toggle__input:checked + .timer-toggle__label .timer-toggle__thumb {
+  background: #ffffff;
+  transform: translateX(1.25rem);
+}
+
+/* Keyboard focus */
+.timer-toggle__input:focus-visible + .timer-toggle__label {
+  outline: 2px solid var(--color-cyan);
+  outline-offset: 3px;
+}
+
+/* ---------- Reduced motion (consolidated in animations.css later) ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .category-option__card,
+  .category-option__icon,
+  .category-option__check,
+  .timer-toggle__label,
+  .timer-toggle__track,
+  .timer-toggle__thumb {
+    transition: none;
+  }
+
+  .category-option:hover .category-option__card {
+    transform: none;
+  }
+}

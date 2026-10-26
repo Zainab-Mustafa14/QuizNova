@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="QuizNova is an interactive technology and general knowledge quiz built with HTML, CSS, and vanilla JavaScript."
+    />
+    <meta name="theme-color" content="#07070c" />
+    <title>QuizNova | Technology &amp; General Knowledge Quiz</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+
+
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+
+  <body>
+ 
+    <div class="ambient-bg" aria-hidden="true">
+      <div class="ambient-bg__orb ambient-bg__orb--violet"></div>
+      <div class="ambient-bg__orb ambient-bg__orb--cyan"></div>
+      <div class="ambient-bg__orb ambient-bg__orb--mixed"></div>
+      <canvas class="ambient-bg__canvas"></canvas>
+    </div>
+
+    <div class="app-shell">
+      <header class="site-header">
+        <div class="container site-header__inner">
+          <p class="brand">
+            <span class="brand__mark" aria-hidden="true">N</span>
+            <span class="brand__name">QuizNova</span>
+          </p>
+        </div>
+      </header>
+
+      <main class="site-main" id="main-content">
+        <div class="container">
+          <!-- WELCOME SCREEN -->
+          <section
+            class="welcome"
+            id="welcome-screen"
+            aria-labelledby="welcome-title"
+          >
+            <!-- Left: introduction -->
+            <div class="welcome__intro">
+              <p class="welcome__eyebrow">Test your knowledge</p>
+
+              <h1 class="welcome__title" id="welcome-title" tabindex="-1">
+                Challenge your
+                <span class="welcome__title-accent">mind.</span>
+              </h1>
+
+              <p class="welcome__description">
+                QuizNova mixes web development, computer science, science, and
+                world knowledge into fast, focused rounds. Pick a topic, beat
+                the clock, and see how much you really know.
+              </p>
+
+              <ul class="welcome__facts" role="list">
+                <li class="welcome__fact">
+                  <strong class="welcome__fact-value">10</strong>
+                  <span class="welcome__fact-label">Questions per round</span>
+                </li>
+                <li class="welcome__fact">
+                  <strong class="welcome__fact-value">20s</strong>
+                  <span class="welcome__fact-label">Optional timer</span>
+                </li>
+                <li class="welcome__fact">
+                  <strong class="welcome__fact-value">8</strong>
+                  <span class="welcome__fact-label">Categories</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Right: round setup panel -->
+            <div class="setup card card--glass">
+              <div>
+                <h2 class="setup__title">Set up your round</h2>
+                <p class="setup__subtitle">
+                  Choose a topic, decide on the timer, and start.
+                </p>
+              </div>
+
+              <!-- Category radio group -->
+              <fieldset class="setup__group">
+                <legend class="setup__legend">Choose a category</legend>
+
+                <div class="category-grid">
+                  <label class="category-option category-option--featured">
+                    <input
+                      class="category-option__input"
+                      type="radio"
+                      name="category"
+                      value="mixed"
+                      checked
+                    />
+                    <span class="category-option__card">
+                      <span class="category-option__icon" aria-hidden="true">✦</span>
+                      <span class="category-option__text">
+                        <span class="category-option__name">Mixed Quiz</span>
+                        <span class="category-option__hint">Questions from all 8 categories</span>
+                      </span>
+                      <span class="category-option__check" aria-hidden="true">✓</span>
+                    </span>
+                  </label>
+
+                  <label class="category-option">
+                    <input class="category-option__input" type="radio" name="category" value="html" />
+                    <span class="category-option__card">
+                      <span class="category-option__icon" aria-hidden="true">&lt;/&gt;</span>
+                      <span class="category-option__name">HTML</span>
+                      <span class="category-option__check" aria-hidden="true">✓</span>
+                    </span>
+                  </label>
+
+                  <label class="category-option">
+                    <input class="category-option__input" type="radio" name="category" value="css" />
+                    <span class="category-option__card">
+                      <span class="category-option__icon" aria-hidden="true">{}</span>
+                      <span class="category-option__name">CSS</span>
+                      <span class="category-option__check" aria-hidden="true">✓</span>
+                    </span>
+                  </label>
+
+                  <label class="category-option">
+                    <input class="category-option__input" type="radio" name="category" value="javascript" />
+                    <span class="category-option__card">
+                      <span class="category-option__icon" aria-hidden="true">JS</span>
+                      <span class="category-option__name">JavaScript</span>
+                      <span class="category-option__check" aria-hidden="true">✓</span>
+                    </span>
+                  </label>
+
+                  <label class="category-option">
+                    <input class="category-option__input" type="radio" name="category" value="computer-science" />
+                    <span class="category-option__card">
+                      <span class="category-option__icon" aria-hidden="true">CS</span>
+                      <span class="category-option__name">Computer Science</span>
+                      <span class="category-option__check" aria-hidden="true">✓</span>
+                    </span>
+                  </label>
+
+                  <label class="category-option">
+                    <input class="category-option__input" type="radio" name="category" value="science" />
+                    <span class="category-option__card">
+                      <span class="category-option__icon" aria-hidden="true">Sci</span>
+                      <span class="category-option__name">Science</span>
+                      <span class="category-option__check" aria-hidden="true">✓</span>
+                    </span>
+                  </label>
+
+                  <label class="category-option">
+                    <input class="category-option__input" type="radio" name="category" value="geography" />
+                    <span class="category-option__card">
+                      <span class="category-option__icon" aria-hidden="true">Geo</span>
+                      <span class="category-option__name">Geography</span>
+                      <span class="category-option__check" aria-hidden="true">✓</span>
+                    </span>
+                  </label>
+
+                  <label class="category-option">
+                    <input class="category-option__input" type="radio" name="category" value="history" />
+                    <span class="category-option__card">
+                      <span class="category-option__icon" aria-hidden="true">His</span>
+                      <span class="category-option__name">History</span>
+                      <span class="category-option__check" aria-hidden="true">✓</span>
+                    </span>
+                  </label>
+
+                  <label class="category-option">
+                    <input class="category-option__input" type="radio" name="category" value="general-knowledge" />
+                    <span class="category-option__card">
+                      <span class="category-option__icon" aria-hidden="true">GK</span>
+                      <span class="category-option__name">General Knowledge</span>
+                      <span class="category-option__check" aria-hidden="true">✓</span>
+                    </span>
+                  </label>
+                </div>
+              </fieldset>
+
+           
+              <div class="timer-toggle">
+                <input
+                  class="timer-toggle__input"
+                  id="timer-toggle"
+                  type="checkbox"
+                  role="switch"
+                  checked
+                  aria-labelledby="timer-toggle-title"
+                  aria-describedby="timer-toggle-hint"
+                />
+                <label class="timer-toggle__label" for="timer-toggle">
+                  <span class="timer-toggle__text">
+                    <span class="timer-toggle__title" id="timer-toggle-title">Timed questions</span>
+                    <span class="timer-toggle__hint" id="timer-toggle-hint">
+                      Each question gets 20 seconds when enabled.
+                    </span>
+                  </span>
+                  <span class="timer-toggle__track" aria-hidden="true">
+                    <span class="timer-toggle__thumb"></span>
+                  </span>
+                </label>
+              </div>
+
+              <div class="setup__footer">
+                <p class="notice notice--error" id="start-error" role="alert" hidden></p>
+
+                <button
+                  class="btn btn--primary btn--lg btn--block"
+                  id="start-button"
+                  type="button"
+                >
+                  <span id="start-button-label">Start Quiz</span>
+                  <span class="btn__icon" aria-hidden="true">→</span>
+                </button>
+                <p class="setup__note">10 questions per round</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="quiz" id="quiz-screen" aria-labelledby="quiz-question" hidden>
+            <div class="quiz__topbar">
+              <p class="quiz__category" data-quiz="category">Category</p>
+
+              <div class="quiz__meta">
+          
+                <div
+                  class="timer"
+                  data-quiz="timer"
+                  role="timer"
+                  aria-label="Time remaining for this question"
+                  hidden
+                >
+                  <svg class="timer__ring" viewBox="0 0 44 44" aria-hidden="true">
+                    <defs>
+                      <linearGradient id="timer-gradient" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0%" stop-color="#8b5cf6" />
+                        <stop offset="100%" stop-color="#22d3ee" />
+                      </linearGradient>
+                    </defs>
+                    <circle class="timer__track" cx="22" cy="22" r="18" />
+                    <circle class="timer__fill" data-quiz="timer-fill" cx="22" cy="22" r="18" />
+                  </svg>
+                  <span class="timer__text"><strong data-quiz="timer-text">20</strong>s</span>
+                </div>
+
+                <p class="quiz__counter">
+                  Question
+                  <strong data-quiz="current">1</strong>
+                  of
+                  <strong data-quiz="total">10</strong>
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="progress"
+              data-quiz="progress"
+              role="progressbar"
+              aria-label="Quiz progress"
+              aria-valuemin="0"
+              aria-valuemax="10"
+              aria-valuenow="1"
+              aria-valuetext="Question 1 of 10"
+            >
+              <div class="progress__fill" data-quiz="progress-fill"></div>
+            </div>
+
+            <article class="quiz__card card card--glass">
+              <h1 class="quiz__question" id="quiz-question" data-quiz="question" tabindex="-1">
+                Question text appears here
+              </h1>
+              <div
+                class="quiz__options"
+                data-quiz="options"
+                role="group"
+                aria-labelledby="quiz-question"
+              ></div>
+
+              <div
+                class="feedback"
+                data-quiz="feedback"
+                role="group"
+                aria-labelledby="quiz-feedback-title"
+                tabindex="-1"
+                hidden
+              >
+                <div class="feedback__header">
+                  <span class="feedback__icon" data-quiz="feedback-icon" aria-hidden="true">✓</span>
+                  <h2 class="feedback__title" id="quiz-feedback-title" data-quiz="feedback-title">Correct!</h2>
+                </div>
+                <p class="feedback__answer" data-quiz="feedback-answer" hidden></p>
+                <p class="feedback__explanation" data-quiz="feedback-explanation"></p>
+              </div>
+
+              <div class="quiz__actions">
+                <button
+                  class="btn btn--primary btn--lg"
+                  id="next-button"
+                  data-quiz="next"
+                  type="button"
+                  disabled
+                >
+                  <span data-quiz="next-label">Next Question</span>
+                  <span class="btn__icon" aria-hidden="true">→</span>
+                </button>
+              </div>
+            </article>
+          </section>
+
+      
+          <section class="results" id="results-screen" aria-labelledby="results-title" hidden>
+            <div class="results__card card card--glass">
+              <p class="results__category" data-results="category">Mixed Quiz</p>
+              <h1 class="results__title" id="results-title" tabindex="-1">Quiz Complete!</h1>
+
+              <div class="score-ring" role="img" data-results="ring" aria-label="Score">
+                <svg class="score-ring__svg" viewBox="0 0 120 120" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="score-gradient" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0%" stop-color="#8b5cf6" />
+                      <stop offset="100%" stop-color="#22d3ee" />
+                    </linearGradient>
+                  </defs>
+                  <circle class="score-ring__track" cx="60" cy="60" r="52" />
+                  <circle class="score-ring__fill" data-results="ring-fill" cx="60" cy="60" r="52" />
+                </svg>
+                <div class="score-ring__label" aria-hidden="true">
+                  <strong class="score-ring__percent" data-results="percent">0%</strong>
+                  <span class="score-ring__score" data-results="score">0 / 10</span>
+                </div>
+              </div>
+
+              <div>
+                <h2 class="results__tier" data-results="tier">Performance</h2>
+              </div>
+              <p class="results__message" data-results="message"></p>
+
+              <ul class="results__stats" role="list">
+                <li class="stat stat--correct">
+                  <span class="stat__value" data-results="correct">0</span>
+                  <span class="stat__label">Correct</span>
+                </li>
+                <li class="stat stat--incorrect">
+                  <span class="stat__value" data-results="incorrect">0</span>
+                  <span class="stat__label">Incorrect</span>
+                  <span class="stat__note" data-results="incorrect-note" hidden></span>
+                </li>
+              </ul>
+
+              <p class="results__summary" data-results="summary"></p>
+              <p class="results__best-score" data-results="best-score" role="status">Personal best: —</p>
+
+              <!-- Polite status messages (for example, the Review placeholder) and start errors -->
+              <p class="notice results__note" data-results="note" role="status" hidden></p>
+              <p class="notice notice--error results__error" data-results="error" role="alert" hidden></p>
+
+              <div class="results__actions">
+                <button class="btn btn--primary btn--lg" type="button" data-results="try-again">
+                  <span data-results="try-again-label">Try Again</span>
+                </button>
+                <button class="btn btn--secondary btn--lg" type="button" data-results="review">
+                  Review Answers
+                </button>
+                <button class="btn btn--ghost btn--lg" type="button" data-results="back">
+                  Back to Welcome
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <!-- REVIEW SCREEN: populated from the completed quiz session. -->
+          <section class="review" id="review-screen" aria-labelledby="review-title" hidden>
+            <div class="review__header card card--glass">
+              <p class="review__eyebrow">QUIZ SUMMARY</p>
+              <h1 id="review-title" tabindex="-1">Review Answers</h1>
+              <p class="review__summary" data-review="summary"></p>
+              <div class="review__actions">
+                <button class="btn btn--secondary btn--lg" type="button" data-review="back-results">Back to Results</button>
+                <button class="btn btn--ghost btn--lg" type="button" data-review="back-welcome">Back to Welcome</button>
+              </div>
+            </div>
+            <div class="review__list" data-review="list" aria-live="polite"></div>
+          </section>
+        </div>
+      </main>
+
+      <footer class="site-footer">
+        <div class="container">
+          <p><small>Develop By Zainab Mustafa</small></p>
+        </div>
+      </footer>
+    </div>
+
+    <noscript>QuizNova needs JavaScript enabled to run the quiz.</noscript>
+
+    <!-- type="module" turns on ES module support (import/export). -->
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,19 @@
+
+
+@import url("base/tokens.css");
+@import url("base/reset.css");
+
+@import url("layout/app-shell.css");
+@import url("layout/background.css");
+
+@import url("components/buttons.css");
+@import url("components/cards.css");
+@import url("components/states.css");
+@import url("components/timer.css");
+
+@import url("screens/welcome.css");
+@import url("screens/quiz.css");
+@import url("screens/results.css");
+@import url("screens/review.css");
+
+@import url("animations.css");

@@ -1,0 +1,31 @@
+.review { display: grid; gap: 1.25rem; width: 100%; max-width: 920px; margin-inline: auto; padding: clamp(1rem, 3vw, 2rem) 0 3rem; }
+.review__header { padding: clamp(1.25rem, 3vw, 2rem); }
+.review__eyebrow { color: var(--color-accent, #22d3ee); font-size: .75rem; font-weight: 800; letter-spacing: .16em; margin: 0 0 .5rem; }
+.review__header h1 { margin: 0; font-size: clamp(1.8rem, 4vw, 2.5rem); }
+.review__summary { color: var(--text-muted, #a6a6bd); margin: .65rem 0 1.25rem; }
+.review__actions { display: flex; flex-wrap: wrap; gap: .75rem; }
+.review__list { display: grid; gap: 1rem; }
+.review-card { min-width: 0; padding: clamp(1rem, 2.5vw, 1.5rem); border: 1px solid rgba(148, 163, 184, .22); border-radius: 1.1rem; background: rgba(18, 20, 39, .78); box-shadow: 0 12px 32px rgba(0,0,0,.12); }
+.review-card--correct { border-left: 3px solid #34d399; }
+.review-card--incorrect { border-left: 3px solid #fb7185; }
+.review-card__top { display: flex; justify-content: space-between; align-items: flex-start; gap: .75rem; margin-bottom: 1rem; }
+.review-card__meta { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; }
+.review-card__number { font-weight: 750; color: #f4f4ff; }
+.review-card__category { text-transform: capitalize; font-size: .75rem; color: #c4b5fd; background: rgba(139,92,246,.14); border-radius: 999px; padding: .25rem .6rem; }
+.review-card__status { flex-shrink: 0; font-size: .78rem; font-weight: 750; border-radius: 999px; padding: .3rem .65rem; }
+.review-card__status.is-correct { color: #6ee7b7; background: rgba(16,185,129,.13); }
+.review-card__status.is-incorrect { color: #fda4af; background: rgba(244,63,94,.13); }
+.review-card__question { font-size: 1.1rem; line-height: 1.55; margin: 0 0 1rem; overflow-wrap: anywhere; }
+.review-card__options { list-style: none; padding: 0; margin: 0; display: grid; gap: .5rem; }
+.review-option { display: flex; align-items: flex-start; gap: .65rem; min-width: 0; padding: .7rem .8rem; border: 1px solid rgba(148,163,184,.17); border-radius: .7rem; color: #d4d4e8; background: rgba(255,255,255,.025); }
+.review-option__letter { flex: 0 0 1.3rem; font-weight: 800; color: #a5b4fc; }
+.review-option__text { flex: 1; min-width: 0; overflow-wrap: anywhere; }
+.review-option--correct { border-color: rgba(52,211,153,.55); background: rgba(16,185,129,.10); color: #d1fae5; }
+.review-option--selected-wrong { border-color: rgba(251,113,133,.6); background: rgba(244,63,94,.10); color: #ffe4e6; }
+.review-option__tag { font-size: .72rem; font-weight: 750; flex-shrink: 0; color: #6ee7b7; }
+.review-option--selected-wrong .review-option__tag { color: #fda4af; }
+.review-card__answer-line { margin: .9rem 0 0; color: #d6d6e8; font-size: .9rem; line-height: 1.55; overflow-wrap: anywhere; }
+.review-card__explanation { margin-top: .9rem; padding: .9rem 1rem; border-radius: .75rem; background: rgba(139,92,246,.09); border: 1px solid rgba(139,92,246,.18); }
+.review-card__explanation strong { color: #c4b5fd; font-size: .85rem; }
+.review-card__explanation p { margin: .35rem 0 0; color: #c8c8dd; line-height: 1.6; overflow-wrap: anywhere; }
+@media (max-width: 540px) { .review-card__top { flex-direction: column; } .review-option { flex-wrap: wrap; } .review-option__tag { margin-left: 1.95rem; } .review__actions .btn { width: 100%; } }

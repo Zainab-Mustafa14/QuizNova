@@ -1,0 +1,49 @@
+
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+}
+
+.card--glass {
+  position: relative;
+  isolation: isolate;
+  /* Solid-ish fallback first, in case backdrop-filter isn't supported */
+  background: rgba(23, 23, 36, 0.92);
+  border-color: transparent; /* the gradient hairline below replaces the border */
+  box-shadow: var(--shadow-card), var(--shadow-glow);
+}
+
+@supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .card--glass {
+    background: rgba(23, 23, 36, 0.62);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    backdrop-filter: blur(18px) saturate(140%);
+  }
+}
+
+/* Gradient hairline border drawn with a masked pseudo-element */
+.card--glass::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px; /* border thickness */
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    rgba(139, 92, 246, 0.65),
+    rgba(255, 255, 255, 0.06) 45%,
+    rgba(34, 211, 238, 0.5)
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  mask:
+    linear-gradient(#000 0 0) content-box exclude,
+    linear-gradient(#000 0 0);
+  pointer-events: none;
+}
